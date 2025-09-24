@@ -69,7 +69,6 @@ public class Decoder {
                     }
                 }
             }
-            System.out.println(resultado);
 
 
 

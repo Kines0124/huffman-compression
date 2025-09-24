@@ -23,7 +23,7 @@ public class BTree {
     }
 
     public void huffmanTree(Map<Character,Integer> freq) {
-        LinkedList<BNode> listaNos = new LinkedList<>();
+        PriorityQueue<BNode> listaNos = new PriorityQueue<>(Comparator.comparingInt(BNode::getValor));
 
         for (Map.Entry<Character, Integer> entry : freq.entrySet()) {
             BNode no = new BNode(entry.getValue(), entry.getKey());
@@ -31,10 +31,9 @@ public class BTree {
         }
 
         while(listaNos.size() > 1) {
-            Collections.sort(listaNos, Comparator.comparingInt(BNode::getValor));
 
-            BNode menor1 = listaNos.removeFirst();
-            BNode menor2 = listaNos.removeFirst();
+            BNode menor1 = listaNos.poll();
+            BNode menor2 = listaNos.poll();
 
             BNode pai = new BNode(menor1.getValor() + menor2.getValor());
             pai.setEsq(menor1);
@@ -42,7 +41,7 @@ public class BTree {
 
             listaNos.add(pai);
         }
-        this.no = listaNos.getFirst();
+        this.no = listaNos.poll();
     }
 
     public Map<Character, String> codeMap() {
