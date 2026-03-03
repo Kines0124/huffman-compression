@@ -1,7 +1,6 @@
 package encoder;
 
 import BTree.*;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Encoder {
